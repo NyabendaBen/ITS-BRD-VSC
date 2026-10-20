@@ -1,0 +1,9 @@
+{
+    "targetSet": {
+        "Programs/GSP_Aufgabe1_Taschenrechner/GSP_Aufgabe1_Taschenrechner": {
+            "activeTargetType": "ITSboard"
+        }
+    },
+    "activeSolution": "../Programs/GSP_Aufgabe1_Taschenrechner/GSP_Aufgabe1_Taschenrechner.csolution.yml",
+    "activeTarget": "ITSboard"
+}
