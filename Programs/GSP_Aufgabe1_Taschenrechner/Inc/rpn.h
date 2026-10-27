@@ -2,6 +2,7 @@
 #define RPN_H
 
 #include "errorhandler.h"
+#define PRINT_SIZE 16
 
 // Zahl auf den Stack legen
 ErrorCode rpn_number(int value);

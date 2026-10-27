@@ -11,6 +11,6 @@ typedef enum {
    ERR_UNEXPECTED_INPUT,
 } ErrorCode;
 
-const char *error_to_string(ErrorCode err);
+const char *error_text(ErrorCode err);
 
 #endif // ERRORHANDLER_H
