@@ -78,7 +78,7 @@ ErrorCode rpn_swap(void) {
    return ERR_OK;
 }
 
-// Taste 'C': Alles zuruecksetzen – Stack leeren und oberes Terminal
+// Taste 'C': Alles zurücksetzen – Stack leeren und oberes Terminal
 void rpn_clear(void) {
    stack_clear();
    clear_stdout();
@@ -98,7 +98,7 @@ ErrorCode rpn_add(void) {
    if (err != ERR_OK) {
       return err;
    }
-   // Vorab pruefen: Wuerde die Summe ueber INT_MAX oder unter INT_MIN laufen?
+   // Vorab prüfen: Würde die Summe über INT_MAX oder unter INT_MIN laufen?
    if ((second > 0 && first > INT_MAX - second) ||
        (second < 0 && first < INT_MIN - second)) {
       return ERR_ARITH_OVERFLOW;
@@ -118,7 +118,7 @@ ErrorCode rpn_sub(void) {
    if (err != ERR_OK) {
       return err;
    }
-   // Vorab auf Ueber- oder Unterlauf pruefen
+   // Vorab auf Über- oder Unterlauf prüfen
    if ((second < 0 && first > INT_MAX + second) ||
        (second > 0 && first < INT_MIN + second)) {
       return ERR_ARITH_OVERFLOW;
@@ -180,7 +180,7 @@ ErrorCode rpn_div(void) {
       return ERR_DIV_BY_ZERO;
    }
    // 2. Sonderfall des Zweierkomplements: INT_MIN / -1 ergibt +2147483648 ->
-   // Ueberlauf
+   // Überlauf
    if (first == INT_MIN && second == -1) {
       return ERR_ARITH_OVERFLOW;
    }

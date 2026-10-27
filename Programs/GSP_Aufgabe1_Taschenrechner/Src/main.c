@@ -8,7 +8,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-// Schaut nach, welche Taste gedrueckt wurde, und ruft die passende Funktion auf
+// Schaut nach, welche Taste gedrückt wurde, und ruft die passende Funktion auf
 static ErrorCode execute(T_token token) {
    switch (token.tok) {
    case NUMBER:
@@ -46,17 +46,17 @@ static void print_error_text(ErrorCode err) {
 }
 
 int main(void) {
-   // Hardware und Touch-Display initialisieren
+   // Hardware und Display initialisieren
    initITSboard();
    init_display();
 
    bool error_mode = false;
 
-   // Endlosschleife: Auf Touch-Eingaben warten
+   // Endlosschleife: Auf Touch Eingaben warten
    while (1) {
       T_token token = next_token();
 
-      // CLEAR setzt den Rechner jederzeit zurueck
+      // CLEAR setzt den Rechner jederzeit zurück
       if (token.tok == CLEAR) {
          rpn_clear();
          set_normal_mode();
@@ -64,12 +64,12 @@ int main(void) {
          continue;
       }
 
-      // Solange ein Fehler vorliegt: alle Tasten ausser CLEAR ignorieren
+      // Solange ein Fehler vorliegt: alle Tasten außer CLEAR ignorieren
       if (error_mode) {
          continue;
       }
 
-      // Eingegebenen Befehl ausfuehren
+      // Eingegebenen Befehl ausführen
       ErrorCode err = execute(token);
 
       // Bei Fehler: Terminal auf rot schalten und Fehlermodus aktivieren

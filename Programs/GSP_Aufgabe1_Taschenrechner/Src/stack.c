@@ -2,7 +2,7 @@
 #include "stack.h"
 #include "errorhandler.h"
 
-// Speicher fuer maximal 8 Zahlen; count merkt sich wie viele gerade drauf
+// Speicher für maximal 8 Zahlen; count merkt sich wie viele gerade drauf
 // liegen
 static int data[STACK_SIZE];
 static int count = 0;
@@ -19,32 +19,32 @@ ErrorCode stack_push(int value) {
    if (count >= STACK_SIZE) {
       return ERR_STACK_OVERFLOW;
    }
-   // Wert an der naechsten freien Position speichern und Zaehler erhoehen
+   // Wert an der nächsten freien Position speichern und Zähler erhöhen
    data[count] = value;
    count++;
    return ERR_OK;
 }
 
-// Holt den obersten Wert vom Stack (Call-by-Reference ueber Zeiger)
+// Holt den obersten Wert vom Stack (Call-by-Reference über Zeiger)
 ErrorCode stack_pop(int *value) {
-   // Pruefen, ob mindestens ein Element vorhanden ist
+   // Prüfen, ob mindestens ein Element vorhanden ist
    if (count <= 0) {
       return ERR_STACK_UNDERFLOW;
    }
-   // Zaehler verringern und obersten Wert ueber den Zeiger zurueckgeben
+   // Zähler verringern und obersten Wert über den Zeiger zurückgeben
    count--;
    *value = data[count];
    return ERR_OK;
 }
 
-// Liest einen Wert relativ zur Spitze (depth 0 = oberstes Element), ohne ihn zu
-// entfernen
+// Liest einen Wert, basierend auf der Tiefe (depth 0 = oberstes Element), ohne
+// ihn zu entfernen
 ErrorCode stack_peek(int depth, int *value) {
-   // Pruefen, ob die gewuenschte Tiefe gueltig ist
+   // Prüfen, ob die gewünschte Tiefe gültig ist
    if (depth < 0 || depth >= count) {
       return ERR_STACK_UNDERFLOW;
    }
-   // Von oben nach unten zaehlen: count - 1 ist oben, - depth geht weiter nach
+   // Von oben nach unten zählen: count - 1 ist oben, - depth geht weiter nach
    // unten
    *value = data[count - 1 - depth];
    return ERR_OK;
