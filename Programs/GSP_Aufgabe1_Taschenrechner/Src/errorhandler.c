@@ -1,5 +1,6 @@
 #include "errorhandler.h"
 
+// Liefert den passenden Fehlertext zu einem gegebenen ErrorCode
 const char *error_text(ErrorCode err) {
    switch (err) {
    case ERR_OK:
@@ -9,14 +10,15 @@ const char *error_text(ErrorCode err) {
    case ERR_ARITH_OVERFLOW:
       return "Arithmetischer Ueberlauf";
    case ERR_INPUT_OVERFLOW:
-      return "Eingabe Ueberlauf";
+      return "Eingabe-Ueberlauf";
    case ERR_STACK_OVERFLOW:
-      return "Stack Ueberlauf";
+      return "Stack-Ueberlauf";
    case ERR_STACK_UNDERFLOW:
-      return "Stack Unterlauf";
+      return "Stack-Unterlauf";
    case ERR_UNEXPECTED_INPUT:
       return "Unerwartete Eingabe";
    default:
+      // Falls ein unbekannter Fehlercode reinkommt
       return "Unbekannter Fehler";
    }
 }

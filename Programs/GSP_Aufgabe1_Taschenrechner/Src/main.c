@@ -1,10 +1,3 @@
-/**
- ******************************************************************************
- * @file    main.c
- * @author  Franz Korf
- * @brief   Kleines Testprogramm fuer neu erstelle Fonts.
- ******************************************************************************
- */
 #include "main.h"
 #include "display.h"
 #include "errorhandler.h"
@@ -12,9 +5,10 @@
 #include "rpn.h"
 #include "scanner.h"
 #include "token.h"
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
 
+// Schaut nach, welche Taste gedrueckt wurde, und ruft die passende Funktion auf
 static ErrorCode execute(T_token token) {
    switch (token.tok) {
    case NUMBER:
@@ -36,13 +30,15 @@ static ErrorCode execute(T_token token) {
    case SWAP:
       return rpn_swap();
    case OVERFLOW:
+      // Scanner meldet: Zahl > INT_MAX eingetippt
       return ERR_INPUT_OVERFLOW;
    default:
-      // Für # oder e
+      // Tasten '#' und 'e' erzeugen das Token UNEXPECTED
       return ERR_UNEXPECTED_INPUT;
    }
 }
 
+// Fehlertext formatieren und ins Terminal schreiben
 static void print_error_text(ErrorCode err) {
    char buf[ERR_TEXT_SIZE];
    (void)snprintf(buf, sizeof(buf), "%s\n", error_text(err));
@@ -50,15 +46,17 @@ static void print_error_text(ErrorCode err) {
 }
 
 int main(void) {
-
+   // Hardware und Touch-Display initialisieren
    initITSboard();
    init_display();
 
    bool error_mode = false;
 
+   // Endlosschleife: Auf Touch-Eingaben warten
    while (1) {
       T_token token = next_token();
 
+      // CLEAR setzt den Rechner jederzeit zurueck
       if (token.tok == CLEAR) {
          rpn_clear();
          set_normal_mode();
@@ -66,18 +64,19 @@ int main(void) {
          continue;
       }
 
+      // Solange ein Fehler vorliegt: alle Tasten ausser CLEAR ignorieren
       if (error_mode) {
-         continue; // Ignoriere Eingaben, wenn ein Fehler aufgetreten ist
+         continue;
       }
+
+      // Eingegebenen Befehl ausfuehren
       ErrorCode err = execute(token);
 
+      // Bei Fehler: Terminal auf rot schalten und Fehlermodus aktivieren
       if (err != ERR_OK) {
          set_err_mode();
          print_error_text(err);
-         error_mode =
-             true; // Setze den Fehlerstatus, um weitere Eingaben zu ignorieren
+         error_mode = true;
       }
    }
 }
-
-// EOF
