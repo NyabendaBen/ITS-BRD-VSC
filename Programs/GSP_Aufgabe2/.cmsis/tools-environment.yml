@@ -11,7 +11,7 @@ cmsis-tools-environment:
       - c:/Users/youse/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin
       - c:/Users/youse/.vcpkg/artifacts/2139c4c6/compilers.arm.arm.none.eabi.gcc/13.3.1/bin
       - c:/Users/youse/.vcpkg/artifacts/2139c4c6/compilers.arm.llvm.embedded/17.0.1/bin
-      - c:/Users/youse/.vcpkg/artifacts/2139c4c6/debuggers.arm.armdbg/6.11.0/bin
+      - c:/Users/youse/.vcpkg/artifacts/2139c4c6/debuggers.arm.armdbg/6.12.0/bin
       - c:/Users/youse/.vscode/extensions/arm.vscode-cmsis-debugger-1.10.1-win32-x64/tools/gdb/bin
     variables:
       AC6_TOOLCHAIN_6_24_0: c:/Users/youse/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/
@@ -74,12 +74,12 @@ cmsis-tools-environment:
         id: arm.environment-manager
       directory: c:/Users/youse/.vcpkg/artifacts/2139c4c6/compilers.arm.llvm.embedded/17.0.1
     - name: debuggers.arm.armdbg
-      version: 6.11.0
+      version: 6.12.0
       origin: installed
       provider:
         type: vcpkg
         id: arm.environment-manager
-      directory: c:/Users/youse/.vcpkg/artifacts/2139c4c6/debuggers.arm.armdbg/6.11.0
+      directory: c:/Users/youse/.vcpkg/artifacts/2139c4c6/debuggers.arm.armdbg/6.12.0
     - name: Arm GNU GDB
       version: 15.3.1
       origin: built-in
